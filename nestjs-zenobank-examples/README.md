@@ -8,9 +8,7 @@
 
 # NestJS Crypto Payment Gateway
 
-A NestJS backend example that integrates [Zeno Bank](https://zenobank.io) as a crypto payment gateway using the [`@zenobank/sdk`](https://www.npmjs.com/package/@zenobank/sdk).
-
-Accept crypto payments in a NestJS backend with order management, checkout creation, and webhook handling.
+NestJS example for accepting crypto payments with [Zeno Bank](https://zenobank.io) and the [`@zenobank/sdk`](https://www.npmjs.com/package/@zenobank/sdk).
 
 ## How it works
 
