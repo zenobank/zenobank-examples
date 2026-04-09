@@ -1,10 +1,9 @@
 import { Controller, Post, Req, UseGuards } from '@nestjs/common';
 import type { WebhookEvent as ZenoBankWebhookEvent } from '@zenobank/sdk';
 import { PrismaService } from '../prisma/prisma.service';
-import { OrderStatus } from '../../generated/prisma/enums.js';
+import { OrderStatus, Order } from '@prisma/client';
 import { ZenoBankSignatureGuard } from './zenobank-signature.guard';
 import type { Request } from 'express';
-import { Order } from 'generated/prisma/client';
 
 @Controller('webhooks/zenobank')
 export class ZenoBankWebhookController {

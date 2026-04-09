@@ -1,6 +1,5 @@
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -14,8 +13,8 @@ enum OrderStatus {
 }
 
 model Order {
-  id       String      @id @default(cuid())
-  status   OrderStatus @default(PENDING)
+  id          String      @id @default(cuid())
+  status      OrderStatus @default(PENDING)
   amount      String
   currency    String      @default("USD")
   checkoutUrl String?
