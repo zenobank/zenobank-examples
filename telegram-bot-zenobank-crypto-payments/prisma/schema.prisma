@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  uid          String        @id @default(uuid())
+  telegramId   BigInt        @unique
+  username     String?
+  firstName    String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  subscription Subscription?
+}
+
+model Subscription {
+  id        Int                @id @default(autoincrement())
+  userId    String             @unique
+  user      User               @relation(fields: [userId], references: [uid])
+  status    SubscriptionStatus @default(ACTIVE)
+  endDate   DateTime
+  createdAt DateTime           @default(now())
+  updatedAt DateTime           @updatedAt
+  payments  Payment[]
+
+  @@index([status, endDate])
+}
+
+enum SubscriptionPlan {
+  MONTHLY
+  YEARLY
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  EXPIRED
+}
+
+model Payment {
+  id             String           @id @default(uuid())
+  subscriptionId Int
+  subscription   Subscription     @relation(fields: [subscriptionId], references: [id])
+  plan           SubscriptionPlan
+  amount         Decimal
+  currency       String           @default("USD")
+  status         PaymentStatus    @default(PENDING)
+  checkoutId     String           @unique
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+
+  @@index([subscriptionId])
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  CANCELLED
+}
