@@ -3,5 +3,5 @@ export class OrderResponseDto {
   status: string;
   amount: string;
   currency: string;
-  checkoutUrl: string;
+  checkoutUrl: string | null;
 }

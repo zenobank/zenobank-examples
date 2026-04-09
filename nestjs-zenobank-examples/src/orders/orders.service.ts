@@ -28,10 +28,16 @@ export class OrdersService {
       successRedirectUrl: null,
     });
 
-    const orderResponse = toDto(OrderResponseDto, {
-      ...order,
-      checkoutUrl: checkout.checkoutUrl,
+    const updatedOrder = await this.db.order.update({
+      where: { id: order.id },
+      data: { checkoutUrl: checkout.checkoutUrl },
     });
-    return orderResponse;
+
+    return toDto(OrderResponseDto, updatedOrder);
+  }
+
+  async findOne(id: string): Promise<OrderResponseDto> {
+    const order = await this.db.order.findUniqueOrThrow({ where: { id } });
+    return toDto(OrderResponseDto, order);
   }
 }

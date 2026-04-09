@@ -16,8 +16,9 @@ enum OrderStatus {
 model Order {
   id       String      @id @default(cuid())
   status   OrderStatus @default(PENDING)
-  amount   String
-  currency String      @default("USD")
+  amount      String
+  currency    String      @default("USD")
+  checkoutUrl String?
 
   paidAt    DateTime?
   createdAt DateTime  @default(now())

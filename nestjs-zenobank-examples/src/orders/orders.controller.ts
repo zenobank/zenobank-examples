@@ -1,4 +1,4 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Get, Param, Body } from '@nestjs/common';
 import { OrdersService } from './orders.service';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { OrderResponseDto } from './dto/create-order-response.dto';
@@ -9,7 +9,11 @@ export class OrdersController {
 
   @Post()
   async create(@Body() dto: CreateOrderDto): Promise<OrderResponseDto> {
-    const order = this.ordersService.create(dto);
-    return order;
+    return this.ordersService.create(dto);
+  }
+
+  @Get(':id')
+  async findOne(@Param('id') id: string): Promise<OrderResponseDto> {
+    return this.ordersService.findOne(id);
   }
 }
