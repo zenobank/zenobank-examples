@@ -1,17 +1,24 @@
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://cryptologos.zenobank.io/library/zenobank-text-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="https://cryptologos.zenobank.io/library/zenobank-text-light.png">
+    <img alt="Zeno Bank" src="https://cryptologos.zenobank.io/library/zenobank-text-light.png" height="60">
+  </picture>
+</p>
+
 # NestJS Crypto Payment Gateway
 
 A NestJS backend example that integrates [Zeno Bank](https://zenobank.io) as a crypto payment gateway using the [`@zenobank/sdk`](https://www.npmjs.com/package/@zenobank/sdk).
 
-This project simulates a simple store where you create an order, get a checkout URL to pay with crypto, and receive webhook notifications when the payment status changes.
+Accept crypto payments in a NestJS backend with order management, checkout creation, and webhook handling.
 
 ## How it works
 
-1. `POST /v1/orders` creates an order in the database and a Zeno Bank checkout
-2. The API returns a `checkoutUrl` — use it in your frontend to redirect the customer to pay
-3. The customer pays with crypto
-4. Zeno Bank sends a webhook to `POST /v1/webhooks/zenobank`
-5. The `ZenoBankSignatureGuard` verifies the webhook signature using the SDK
-6. The webhook handler updates the order status in the database
+1. `POST /v1/orders` — creates an order and a Zeno Bank checkout
+2. Returns a `checkoutUrl` — redirect the customer there from your frontend
+3. Customer pays with crypto on the Zeno Bank hosted page
+4. Zeno Bank sends a webhook — signature is verified by a guard using the SDK
+5. Order status is updated in the database
 
 ## Setup
 
