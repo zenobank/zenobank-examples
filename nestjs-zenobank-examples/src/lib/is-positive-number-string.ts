@@ -3,14 +3,13 @@ import {
   ValidationOptions,
   ValidatorConstraint,
   ValidatorConstraintInterface,
+  isNumberString,
 } from 'class-validator';
 
 @ValidatorConstraint({ async: false })
 class IsPositiveNumberStringConstraint implements ValidatorConstraintInterface {
   validate(value: string) {
-    return (
-      typeof value === 'string' && !isNaN(Number(value)) && Number(value) > 0
-    );
+    return isNumberString(value) && Number(value) > 0;
   }
 
   defaultMessage() {

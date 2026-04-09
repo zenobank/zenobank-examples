@@ -3,6 +3,7 @@ import {
   ExecutionContext,
   Inject,
   Injectable,
+  Logger,
   UnauthorizedException,
   RawBodyRequest,
 } from '@nestjs/common';
@@ -13,14 +14,16 @@ import { Request } from 'express';
 
 @Injectable()
 export class ZenoBankSignatureGuard implements CanActivate {
+  private readonly logger = new Logger(ZenoBankSignatureGuard.name);
+
   constructor(
     @Inject(ZENOBANK_CLIENT) private readonly zenoBank: ZenoBankClient,
   ) {}
 
   canActivate(context: ExecutionContext): boolean {
     const req = context.switchToHttp().getRequest<RawBodyRequest<Request>>();
-
     if (!req.rawBody) {
+      this.logger.warn('Webhook request missing raw body');
       throw new UnauthorizedException('Missing raw body');
     }
 
@@ -30,7 +33,9 @@ export class ZenoBankSignatureGuard implements CanActivate {
         rawBody: req.rawBody,
         headers: req.headers,
       });
-    } catch {
+      this.logger.log('Webhook signature verified');
+    } catch (error) {
+      this.logger.warn(`Webhook signature verification failed ${error}`);
       throw new UnauthorizedException('Invalid webhook signature');
     }
 

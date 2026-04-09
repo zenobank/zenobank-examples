@@ -13,7 +13,6 @@ export class ZenoBankWebhookController {
   @Post()
   async handleWebhook(@Req() req: Request) {
     const event: ZenoBankWebhookEvent = req.body as ZenoBankWebhookEvent;
-
     const order = await this.db.order.findFirstOrThrow({
       where: {
         id: event.data.orderId,
