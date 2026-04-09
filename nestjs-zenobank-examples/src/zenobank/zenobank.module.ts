@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { ZenobankClient } from '@zenobank/sdk';
+import { ZenoBankClient } from '@zenobank/sdk';
 import { env } from '../lib/env';
 import { ZenoBankWebhookController } from './zenobank-webhook.controller';
 
@@ -10,7 +10,7 @@ export const ZENOBANK_CLIENT = Symbol('ZENOBANK_CLIENT');
   providers: [
     {
       provide: ZENOBANK_CLIENT,
-      useFactory: () => new ZenobankClient({ apiKey: env.ZENOBANK_API_KEY }),
+      useFactory: () => new ZenoBankClient({ apiKey: env.ZENOBANK_API_KEY }),
     },
   ],
   exports: [ZENOBANK_CLIENT],

@@ -6,7 +6,7 @@ import {
   UnauthorizedException,
   RawBodyRequest,
 } from '@nestjs/common';
-import { ZenobankClient } from '@zenobank/sdk';
+import { ZenoBankClient } from '@zenobank/sdk';
 import { ZENOBANK_CLIENT } from './zenobank.module';
 import { env } from '../lib/env';
 import { Request } from 'express';
@@ -14,7 +14,7 @@ import { Request } from 'express';
 @Injectable()
 export class ZenoBankSignatureGuard implements CanActivate {
   constructor(
-    @Inject(ZENOBANK_CLIENT) private readonly zenoBank: ZenobankClient,
+    @Inject(ZENOBANK_CLIENT) private readonly zenoBank: ZenoBankClient,
   ) {}
 
   canActivate(context: ExecutionContext): boolean {

@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { ZenobankClient } from '@zenobank/sdk';
+import { ZenoBankClient } from '@zenobank/sdk';
 import { ZENOBANK_CLIENT } from '../zenobank/zenobank.module';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateOrderDto } from './dto/create-order.dto';
@@ -9,7 +9,7 @@ import { toDto } from 'src/lib/to-dto';
 @Injectable()
 export class OrdersService {
   constructor(
-    @Inject(ZENOBANK_CLIENT) private readonly zenoBank: ZenobankClient,
+    @Inject(ZENOBANK_CLIENT) private readonly zenoBank: ZenoBankClient,
     private readonly db: PrismaService,
   ) {}
 

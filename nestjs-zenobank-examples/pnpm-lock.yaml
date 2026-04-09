@@ -21,8 +21,8 @@ importers:
         specifier: ^7.7.0
         version: 7.7.0(prisma@7.7.0(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(typescript@5.9.3))(typescript@5.9.3)
       '@zenobank/sdk':
-        specifier: ^0.3.0
-        version: 0.3.0
+        specifier: ^0.4.0
+        version: 0.4.0
       class-transformer:
         specifier: ^0.5.1
         version: 0.5.1
@@ -1233,8 +1233,8 @@ packages:
   '@xtuc/long@4.2.2':
     resolution: {integrity: sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==}
 
-  '@zenobank/sdk@0.3.0':
-    resolution: {integrity: sha512-Od+e2idBKMUVSIFE1kAc8x84EOxaI2+OPPOanvq/Tbzhyql4PQiFSQh5c1wQ0q3jCanqRk+YFF3U1nbxrHUTyg==}
+  '@zenobank/sdk@0.4.0':
+    resolution: {integrity: sha512-vrHvEs589ToU59Bku/Rf36S3/VxPhJRro6lJSqr97RmT8UamasxpM/KlCAkkNOPI3DJCz8o6xjDduqMzy44oQA==}
     engines: {node: '>=18'}
 
   accepts@2.0.0:
@@ -4715,7 +4715,7 @@ snapshots:
 
   '@xtuc/long@4.2.2': {}
 
-  '@zenobank/sdk@0.3.0':
+  '@zenobank/sdk@0.4.0':
     dependencies:
       svix: 1.90.0
 
