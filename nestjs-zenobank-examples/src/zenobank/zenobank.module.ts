@@ -2,8 +2,7 @@ import { Module } from '@nestjs/common';
 import { ZenoBankClient } from '@zenobank/sdk';
 import { env } from '../lib/env';
 import { ZenoBankWebhookController } from './zenobank-webhook.controller';
-
-export const ZENOBANK_CLIENT = Symbol('ZENOBANK_CLIENT');
+import { ZENOBANK_CLIENT } from './zenobank.constants';
 
 @Module({
   controllers: [ZenoBankWebhookController],

@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ZenoBankClient } from '@zenobank/sdk';
-import { ZENOBANK_CLIENT } from '../zenobank/zenobank.module';
+import { ZENOBANK_CLIENT } from '../zenobank/zenobank.constants';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { OrderResponseDto } from './dto/create-order-response.dto';

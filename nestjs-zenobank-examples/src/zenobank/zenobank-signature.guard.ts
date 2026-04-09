@@ -7,7 +7,7 @@ import {
   RawBodyRequest,
 } from '@nestjs/common';
 import { ZenoBankClient } from '@zenobank/sdk';
-import { ZENOBANK_CLIENT } from './zenobank.module';
+import { ZENOBANK_CLIENT } from './zenobank.constants';
 import { env } from '../lib/env';
 import { Request } from 'express';
 
@@ -24,13 +24,13 @@ export class ZenoBankSignatureGuard implements CanActivate {
       throw new UnauthorizedException('Missing raw body');
     }
 
-    const isValid = this.zenoBank.webhooks.isValid({
-      secret: env.ZENOBANK_WEBHOOK_SECRET,
-      rawBody: req.rawBody,
-      headers: req.headers,
-    });
-
-    if (!isValid) {
+    try {
+      this.zenoBank.webhooks.verifyWebhook({
+        secret: env.ZENOBANK_WEBHOOK_SECRET,
+        rawBody: req.rawBody,
+        headers: req.headers,
+      });
+    } catch {
       throw new UnauthorizedException('Invalid webhook signature');
     }
 
