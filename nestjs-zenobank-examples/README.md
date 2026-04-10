@@ -3,7 +3,7 @@
 NestJS example for accepting crypto payments with [Zeno Bank](https://zenobank.io) and the [`@zenobank/sdk`](https://www.npmjs.com/package/@zenobank/sdk).
 
 <p align="center">
-  <img alt="Zenobank hosted checkout page" src="../assets/checkout.png" width="360">
+  <img alt="Zenobank hosted checkout page" src="https://raw.githubusercontent.com/zenobank/zenobank-examples/main/assets/checkout.png" width="360">
 </p>
 
 ## How it works
