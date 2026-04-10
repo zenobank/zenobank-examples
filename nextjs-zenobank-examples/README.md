@@ -3,8 +3,8 @@
 Next.js example for accepting crypto payments with [Zeno Bank](https://zenobank.io) and the [`@zenobank/sdk`](https://www.npmjs.com/package/@zenobank/sdk). Uses the App Router, Route Handlers, and a client-side checkout form that polls for payment status.
 
 <p align="center">
-  <img alt="Zenobank Checkout screenshot" src="./public/screenshot.png" width="420">
-  <img alt="Zenobank hosted checkout page" src="https://raw.githubusercontent.com/zenobank/zenobank-examples/main/assets/checkout.png" width="320">
+  <img alt="Zenobank Checkout screenshot" src="./public/screenshot.png" height="420">
+  <img alt="Zenobank hosted checkout page" src="https://raw.githubusercontent.com/zenobank/zenobank-examples/main/assets/checkout.png" height="420">
 </p>
 
 ## How it works
