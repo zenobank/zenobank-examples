@@ -2,6 +2,9 @@ import { z } from "zod";
 import { ZenoBankError } from "@zenobank/sdk";
 import { zenobank } from "@/lib/zenobank";
 import { Database } from "@/lib/database";
+import { createLogger } from "@/lib/log";
+
+const log = createLogger("api/orders");
 
 const CreateOrderSchema = z.object({
   amount: z
@@ -11,11 +14,11 @@ const CreateOrderSchema = z.object({
 });
 
 export async function POST(request: Request) {
-  console.log("[api/orders] POST received");
+  log.info("POST /api/orders");
   const parsed = CreateOrderSchema.safeParse(await request.json().catch(() => null));
 
   if (!parsed.success) {
-    console.warn("[api/orders] invalid request body", z.treeifyError(parsed.error));
+    log.warn("invalid request body", z.treeifyError(parsed.error));
     return Response.json(
       { error: "Invalid request", details: z.treeifyError(parsed.error) },
       { status: 400 }
@@ -24,7 +27,7 @@ export async function POST(request: Request) {
 
   const { amount, currency } = parsed.data;
   const order = Database.createOrder({ amount, currency });
-  console.log("[api/orders] created order", { id: order.id, amount, currency });
+  log.info("order created", { id: order.id, amount, currency });
 
   try {
     const checkout = await zenobank.checkouts.create({
@@ -33,7 +36,7 @@ export async function POST(request: Request) {
       priceCurrency: currency,
       successRedirectUrl: null,
     });
-    console.log("[api/orders] checkout created", {
+    log.success("checkout created", {
       orderId: order.id,
       checkoutUrl: checkout.checkoutUrl,
     });
@@ -44,10 +47,7 @@ export async function POST(request: Request) {
 
     return Response.json(updated, { status: 201 });
   } catch (err) {
-    console.error("[api/orders] failed to create Zenobank checkout", {
-      orderId: order.id,
-      err,
-    });
+    log.error("failed to create Zenobank checkout", { orderId: order.id, err });
 
     if (err instanceof ZenoBankError) {
       return Response.json(
