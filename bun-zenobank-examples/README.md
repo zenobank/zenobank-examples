@@ -6,6 +6,13 @@ Bun example for accepting crypto payments with [Zeno Bank](https://zenobank.io) 
   <a href="https://pay.zenobank.io/demo"><img alt="Zenobank hosted checkout page" src="https://raw.githubusercontent.com/zenobank/zenobank-examples/main/assets/checkout.png" width="360"></a>
 </p>
 
+## Resources
+
+- [Zeno Bank Documentation](https://docs.zenobank.io)
+- [Zeno Bank Dashboard](https://dashboard.zenobank.io)
+- [Checkout Demo](https://pay.zenobank.io/demo)
+- [SDK on npm](https://www.npmjs.com/package/@zenobank/sdk)
+
 ## How it works
 
 1. `POST /orders` — creates an order and a Zeno Bank checkout
@@ -30,13 +37,15 @@ bun install
 cp .env.example .env
 ```
 
-Edit `.env`:
+Edit `.env` with your credentials:
 
 ```env
 PORT=3000
 ZENOBANK_API_KEY=your-api-key           # From https://dashboard.zenobank.io/developer
 ZENOBANK_WEBHOOK_SECRET=whsec_...       # From https://dashboard.zenobank.io/developer
 ```
+
+> Get your API key and webhook secret from the [Zeno Bank Dashboard](https://dashboard.zenobank.io/developer).
 
 ### 3. Start the server
 
@@ -105,10 +114,3 @@ src/
 ├── orders-handler.ts               # POST /orders, GET /orders/:id
 └── zenobank-webhook-handler.ts     # POST /webhooks/zenobank (verify + dispatch)
 ```
-
-## Resources
-
-- [Zeno Bank Documentation](https://docs.zenobank.io)
-- [Zeno Bank Dashboard](https://dashboard.zenobank.io)
-- [Checkout Demo](https://pay.zenobank.io/demo)
-- [SDK on npm](https://www.npmjs.com/package/@zenobank/sdk)

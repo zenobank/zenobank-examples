@@ -7,6 +7,13 @@ Next.js example for accepting crypto payments with [Zeno Bank](https://zenobank.
   <a href="https://pay.zenobank.io/demo"><img alt="Zenobank hosted checkout page" src="https://raw.githubusercontent.com/zenobank/zenobank-examples/main/assets/checkout.png" height="420"></a>
 </p>
 
+## Resources
+
+- [Zeno Bank Documentation](https://docs.zenobank.io)
+- [Zeno Bank Dashboard](https://dashboard.zenobank.io)
+- [Checkout Demo](https://pay.zenobank.io/demo)
+- [SDK on npm](https://www.npmjs.com/package/@zenobank/sdk)
+
 ## How it works
 
 1. The user enters an amount and currency on the home page (`src/app/page.tsx`)
@@ -96,10 +103,3 @@ ngrok http 3000
 ```
 
 Then add the ngrok URL as your webhook endpoint in the dashboard, e.g. `https://a1b2c3d4.ngrok-free.app/api/webhooks/zenobank`.
-
-## Resources
-
-- [Zeno Bank Documentation](https://docs.zenobank.io)
-- [Zeno Bank Dashboard](https://dashboard.zenobank.io)
-- [Checkout Demo](https://pay.zenobank.io/demo)
-- [SDK on npm](https://www.npmjs.com/package/@zenobank/sdk)

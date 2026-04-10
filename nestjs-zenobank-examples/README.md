@@ -6,6 +6,13 @@ NestJS example for accepting crypto payments with [Zeno Bank](https://zenobank.i
   <a href="https://pay.zenobank.io/demo"><img alt="Zenobank hosted checkout page" src="https://raw.githubusercontent.com/zenobank/zenobank-examples/main/assets/checkout.png" width="360"></a>
 </p>
 
+## Resources
+
+- [Zeno Bank Documentation](https://docs.zenobank.io)
+- [Zeno Bank Dashboard](https://dashboard.zenobank.io)
+- [Checkout Demo](https://pay.zenobank.io/demo)
+- [SDK on npm](https://www.npmjs.com/package/@zenobank/sdk)
+
 ## How it works
 
 1. `POST /v1/orders` — creates an order and a Zeno Bank checkout
@@ -98,11 +105,4 @@ ngrok http 3000
 ```
 
 Then add the ngrok URL as your webhook endpoint in the dashboard, e.g. `https://a1b2c3d4.ngrok-free.app/v1/webhooks/zenobank`.
-
-## Resources
-
-- [Zeno Bank Documentation](https://docs.zenobank.io)
-- [Zeno Bank Dashboard](https://dashboard.zenobank.io)
-- [Checkout Demo](https://pay.zenobank.io/demo)
-- [SDK on npm](https://www.npmjs.com/package/@zenobank/sdk)
 
