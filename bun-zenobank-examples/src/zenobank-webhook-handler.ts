@@ -1,3 +1,4 @@
+import type { WebhookEvent } from "@zenobank/sdk";
 import { env } from "./env.ts";
 import { zenoBank } from "./zenobank.ts";
 import { findOrder, updateOrder } from "./orders-store.ts";
@@ -17,7 +18,7 @@ export async function handleWebhook(req: Request): Promise<Response> {
     return json({ message: "Invalid webhook signature" }, 401);
   }
 
-  const event = JSON.parse(rawBody);
+  const event: WebhookEvent = JSON.parse(rawBody);
   console.log(`[webhook] received ${event.type} for order ${event.data.orderId}`);
 
   const order = findOrder(event.data.orderId);
