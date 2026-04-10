@@ -15,7 +15,7 @@ interface Order {
 const CURRENCIES = ["USD", "EUR", "GBP", "BRL", "ARS", "MXN"];
 
 export default function Home() {
-  const [amount, setAmount] = useState("");
+  const [amount, setAmount] = useState("50");
   const [currency, setCurrency] = useState("USD");
   const [order, setOrder] = useState<Order | null>(null);
   const [loading, setLoading] = useState(false);

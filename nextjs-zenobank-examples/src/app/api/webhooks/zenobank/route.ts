@@ -1,42 +1,54 @@
 import { zenobank } from "@/lib/zenobank";
 import { env } from "@/lib/env";
-import { getOrder, updateOrder } from "@/lib/orders";
+import { Database } from "@/lib/database";
+import { WebhookEvent } from "@zenobank/sdk";
 
 export async function POST(request: Request) {
+  console.log("[webhooks/zenobank] POST received");
   const rawBody = await request.text();
-
-  const headers: Record<string, string> = {};
-  request.headers.forEach((value, key) => {
-    headers[key] = value;
-  });
 
   try {
     zenobank.webhooks.verifyWebhook({
       secret: env.ZENOBANK_WEBHOOK_SECRET,
       rawBody,
-      headers,
+      headers: Object.fromEntries(request.headers),
     });
-  } catch {
+  } catch (err) {
+    console.warn("[webhooks/zenobank] invalid signature", err);
     return Response.json(
       { error: "Invalid webhook signature" },
       { status: 401 }
     );
   }
 
-  const event = JSON.parse(rawBody);
-  const order = getOrder(event.data.orderId);
+  const event: WebhookEvent = JSON.parse(rawBody);
+  console.log("[webhooks/zenobank] event verified", {
+    type: event.type,
+    orderId: event.data.orderId,
+  });
+
+  const order = Database.getOrder(event.data.orderId);
 
   if (!order) {
+    console.warn("[webhooks/zenobank] order not found", {
+      orderId: event.data.orderId,
+    });
     return Response.json({ error: "Order not found" }, { status: 404 });
   }
 
   if (event.type === "checkout.completed") {
-    updateOrder(order.id, {
+    Database.updateOrder(order.id, {
       status: "PAID",
       paidAt: new Date().toISOString(),
     });
+    console.log("[webhooks/zenobank] order marked PAID", { orderId: order.id });
   } else if (event.type === "checkout.expired") {
-    updateOrder(order.id, { status: "CANCELLED" });
+    Database.updateOrder(order.id, { status: "CANCELLED" });
+    console.log("[webhooks/zenobank] order marked CANCELLED", {
+      orderId: order.id,
+    });
+  } else {
+    console.log("[webhooks/zenobank] unhandled event type", { type: event.type });
   }
 
   return Response.json({ received: true });
