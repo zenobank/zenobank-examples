@@ -4,7 +4,7 @@ Next.js example for accepting crypto payments with [Zeno Bank](https://zenobank.
 
 <p align="center">
   <img alt="Zenobank Checkout screenshot" src="./public/screenshot.png" height="420">
-  <img alt="Zenobank hosted checkout page" src="https://raw.githubusercontent.com/zenobank/zenobank-examples/main/assets/checkout.png" height="420">
+  <a href="https://pay.zenobank.io/demo"><img alt="Zenobank hosted checkout page" src="https://raw.githubusercontent.com/zenobank/zenobank-examples/main/assets/checkout.png" height="420"></a>
 </p>
 
 ## How it works
