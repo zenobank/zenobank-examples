@@ -1,17 +1,9 @@
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://cryptologos.zenobank.io/library/zenobank-text-dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="https://cryptologos.zenobank.io/library/zenobank-text-light.png">
-    <img alt="Zeno Bank" src="https://cryptologos.zenobank.io/library/zenobank-text-light.png" height="60">
-  </picture>
-</p>
-
 # NestJS Crypto Payment Gateway
 
 NestJS example for accepting crypto payments with [Zeno Bank](https://zenobank.io) and the [`@zenobank/sdk`](https://www.npmjs.com/package/@zenobank/sdk).
 
 <p align="center">
-  <img alt="Zenobank hosted checkout page" src="./checkout.png" width="360">
+  <img alt="Zenobank hosted checkout page" src="../assets/checkout.png" width="360">
 </p>
 
 ## How it works
