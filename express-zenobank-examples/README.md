@@ -78,7 +78,7 @@ curl http://localhost:3000/orders/<id>
 
 ### Webhook
 
-Zeno Bank delivers events to `POST /api/webhooks/zenobank`. The raw request body is preserved with `express.raw` and the signature is verified by `zenoBank.webhooks.verifyWebhook` before the event is processed.
+Zeno Bank delivers events to `POST /webhooks/zenobank`. The raw request body is preserved with `express.raw` and the signature is verified by `zenoBank.webhooks.verifyWebhook` before the event is processed.
 
 Handled events:
 
@@ -91,7 +91,7 @@ To receive webhooks during development, expose your local server with [ngrok](ht
 ngrok http 3000
 ```
 
-Then register the URL in the [Zeno Bank Dashboard](https://dashboard.zenobank.io/developer), e.g. `https://a1b2c3d4.ngrok-free.app/api/webhooks/zenobank`.
+Then register the URL in the [Zeno Bank Dashboard](https://dashboard.zenobank.io/developer), e.g. `https://a1b2c3d4.ngrok-free.app/webhooks/zenobank`.
 
 ## Project structure
 

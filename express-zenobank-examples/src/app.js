@@ -8,7 +8,7 @@ function createApp() {
 
   // Webhook router is mounted before express.json so it can read the raw body
   // for signature verification.
-  app.use("/api/webhooks/zenobank", zenobankWebhookRouter);
+  app.use("/webhooks/zenobank", zenobankWebhookRouter);
 
   app.use(express.json());
 
