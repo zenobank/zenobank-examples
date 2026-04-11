@@ -5,7 +5,7 @@ Run a private Telegram group as a paid community — users subscribe with crypto
 Built with NestJS + [Telegraf](https://telegraf.js.org), powered by [Zeno Bank](https://zenobank.io) and [`@zenobank/sdk`](https://www.npmjs.com/package/@zenobank/sdk).
 
 <p align="center">
-  <img alt="Telegram bot plan selection" src="./assets/bot-plans.png" width="420">
+  <img alt="Telegram bot /start — plan selection and payment prompt" src="./assets/bot-start.png" width="560">
 </p>
 
 ## Resources
@@ -16,9 +16,19 @@ Built with NestJS + [Telegraf](https://telegraf.js.org), powered by [Zeno Bank](
 
 ## How it works
 
-1. User runs `/start` → picks a plan → bot creates a Zeno Bank checkout.
+1. User runs `/start` → picks a plan → bot creates a Zeno Bank checkout and replies with a **Complete Payment** button.
+
+   <p align="center">
+     <img alt="Bot /start response with plans and payment button" src="./assets/bot-start.png" width="560">
+   </p>
+
 2. User pays with crypto on the hosted checkout.
 3. Zeno Bank webhook → signature verified by `ZenobankSignatureGuard` → subscription extended → bot DMs a **single-use invite link**.
+
+   <p align="center">
+     <img alt="Bot payment received with single-use invite link" src="./assets/bot-payment-completed.png" width="560">
+   </p>
+
 4. Daily cron kicks users whose subscription expired and DMs a renewal prompt.
 
 ## Telegram setup
