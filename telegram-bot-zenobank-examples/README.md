@@ -1,6 +1,6 @@
 # Telegram Bot for Paid Group Subscriptions with Crypto Payments
 
-Turn any private Telegram group into a paid, subscription-based community. Users pay in crypto (USDT, USDC, BTC, ETH, and more) via [Zeno Bank](https://zenobank.io) — a crypto payment gateway that handles hosted checkout, multi-chain support, and webhooks — and the bot takes care of the rest: it generates single-use invite links for paying members, tracks subscription expiry in a Postgres database, and automatically kicks members whose subscriptions have lapsed.
+Turn any private Telegram group into a paid, subscription-based community. Users pay in crypto (USDT, USDC, BTC, ETH, and more) via [Zeno Bank](https://zenobank.io), a crypto payment gateway that handles hosted checkout, multi-chain support, and webhooks. The bot takes care of the rest: it generates single-use invite links for paying members, tracks subscription expiry in a Postgres database, and automatically kicks members whose subscriptions have lapsed.
 
 Built with NestJS + [Telegraf](https://telegraf.js.org) and the [`@zenobank/sdk`](https://www.npmjs.com/package/@zenobank/sdk) for payment processing and webhook verification.
 
@@ -10,9 +10,9 @@ Built with NestJS + [Telegraf](https://telegraf.js.org) and the [`@zenobank/sdk`
 
 ## Resources
 
-- [Zeno Bank Documentation](https://docs.zenobank.io) — API reference and integration guides
-- [Zeno Bank Dashboard](https://dashboard.zenobank.io) — get your API key, webhook secret, and manage payments
-- [`@zenobank/sdk` on npm](https://www.npmjs.com/package/@zenobank/sdk) — official TypeScript SDK used in this example
+- [Zeno Bank Documentation](https://docs.zenobank.io): API reference and integration guides
+- [Zeno Bank Dashboard](https://dashboard.zenobank.io): get your API key, webhook secret, and manage payments
+- [`@zenobank/sdk` on npm](https://www.npmjs.com/package/@zenobank/sdk): official TypeScript SDK used in this example
 
 ## How it works
 
