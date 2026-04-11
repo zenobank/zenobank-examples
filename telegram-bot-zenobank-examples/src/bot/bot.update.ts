@@ -1,5 +1,5 @@
 import { Logger, OnModuleInit } from "@nestjs/common";
-import { Update, Start, Help, Ctx, Action, InjectBot } from "nestjs-telegraf";
+import { Update, Start, Help, Ctx, Action, On, InjectBot } from "nestjs-telegraf";
 import { Context, Telegraf } from "telegraf";
 import { SubscriptionPlan } from "@prisma/client";
 import { SubscriptionsService } from "../subscriptions/subscriptions.service";
@@ -19,6 +19,11 @@ export class BotUpdate implements OnModuleInit {
   ) {}
 
   async onModuleInit() {
+    this.bot.use(async (ctx, next) => {
+      if (ctx.chat && ctx.chat.type !== "private") return;
+      return next();
+    });
+
     await this.bot.telegram.setMyCommands([
       { command: "start", description: "🚀 Subscribe to the group" },
       { command: "status", description: "📊 Check your subscription" },
