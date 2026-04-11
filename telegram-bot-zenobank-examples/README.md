@@ -40,7 +40,7 @@ Built with NestJS + [Telegraf](https://telegraf.js.org) and the [`@zenobank/sdk`
 
 1. **Create the bot** with [@BotFather](https://t.me/BotFather) → `/newbot` → copy the token into `BOT_TOKEN`.
 2. **Make your group a supergroup.** Basic groups can't generate invite links. Convert: group → Edit → Group Type → set **Public** (any temp username), save, then switch back to **Private**. ([Telegram FAQ](https://telegram.org/faq#q-what-39s-the-difference-between-groups-channels-and-supergroups))
-3. **Add the bot as admin** with **Invite Users via Link** + **Ban Users** permissions.
+3. **Add the bot you just created in step 1 to the group as an admin**, with **Invite Users via Link** + **Ban Users** permissions enabled.
 4. **Get the chat id**:
    - Send any message in your group (e.g. "hello").
    - Open this URL in your browser, replacing `<BOT_TOKEN>` with your bot token from BotFather:
