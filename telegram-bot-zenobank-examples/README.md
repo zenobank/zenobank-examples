@@ -2,8 +2,6 @@
 
 Turn any private Telegram group into a paid, subscription-based community. Users pay in crypto (USDT, USDC, BTC, ETH, and more) via [Zeno Bank](https://zenobank.io), a crypto payment gateway that handles hosted checkout, multi-chain support, and webhooks. The bot takes care of the rest: it generates single-use invite links for paying members, tracks subscription expiry in a Postgres database, and automatically kicks members whose subscriptions have lapsed.
 
-Built with NestJS + [Telegraf](https://telegraf.js.org) and the [`@zenobank/sdk`](https://www.npmjs.com/package/@zenobank/sdk) for payment processing and webhook verification.
-
 <p align="center">
   <img alt="Telegram bot /start — plan selection and payment prompt" src="./assets/bot-start.png" width="560">
 </p>
