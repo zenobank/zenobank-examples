@@ -20,17 +20,20 @@ export class BotUpdate implements OnModuleInit {
 
   async onModuleInit() {
     await this.bot.telegram.setMyCommands([
-      { command: "start", description: "Subscribe to the group" },
-      { command: "status", description: "Check your subscription" },
-      { command: "help", description: "Show this message" },
+      { command: "start", description: "🚀 Subscribe to the group" },
+      { command: "status", description: "📊 Check your subscription" },
+      { command: "help", description: "💡 Show help message" },
     ]);
   }
 
   @Start()
   async onStart(@Ctx() ctx: Context) {
     await ctx.reply(
-      "Welcome! Choose a subscription plan to join the group:",
-      BotBuilder.planSelectionKeyboard()
+      "👋 <b>Welcome!</b>\n\n✨ Pick a plan below to unlock access to our exclusive group:",
+      {
+        parse_mode: "HTML",
+        ...BotBuilder.planSelectionKeyboard(),
+      }
     );
   }
 
@@ -60,13 +63,17 @@ export class BotUpdate implements OnModuleInit {
       );
 
       await ctx.reply(
-        "Pay here to get access:",
-        BotBuilder.paymentLinkKeyboard(checkout.checkoutUrl)
+        "💳 <b>Almost there!</b>\n\n🔐 Tap the button below to complete your secure crypto payment:",
+        {
+          parse_mode: "HTML",
+          ...BotBuilder.paymentLinkKeyboard(checkout.checkoutUrl),
+        }
       );
     } catch (error: any) {
       this.logger.error(`Checkout creation failed: ${error.message}`);
       await ctx.reply(
-        "Something went wrong creating your checkout. Please try again with /start."
+        "⚠️ <b>Oops!</b> Something went wrong creating your checkout.\n\n🔄 Please try again with /start.",
+        { parse_mode: "HTML" }
       );
     }
   }
@@ -74,7 +81,8 @@ export class BotUpdate implements OnModuleInit {
   @Help()
   async onHelp(@Ctx() ctx: Context) {
     await ctx.reply(
-      "Available commands:\n\n/start - Subscribe to the group\n/status - Check your subscription\n/help - Show this message"
+      "💡 <b>Available commands</b>\n\n🚀 /start — Subscribe to the group\n📊 /status — Check your subscription\n❓ /help — Show this message",
+      { parse_mode: "HTML" }
     );
   }
 }

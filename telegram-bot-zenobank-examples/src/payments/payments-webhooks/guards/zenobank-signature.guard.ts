@@ -6,7 +6,7 @@ import {
   RawBodyRequest,
 } from "@nestjs/common";
 import { Request } from "express";
-import { ZenoBankClient } from "@zenobank/sdk";
+import { ZenoBankClient, WebhookVerificationError } from "@zenobank/sdk";
 import { env } from "../../../lib/env";
 
 @Injectable()
@@ -28,16 +28,19 @@ export class ZenobankSignatureGuard implements CanActivate {
       return false;
     }
 
-    const isValid = this.zenobank.webhooks.isValid({
-      secret: env.ZENOBANK_WEBHOOK_SECRET,
-      rawBody: payload,
-      headers: request.headers,
-    });
-
-    if (!isValid) {
-      this.logger.warn("Invalid webhook signature");
+    try {
+      this.zenobank.webhooks.verifyWebhook({
+        secret: env.ZENOBANK_WEBHOOK_SECRET,
+        rawBody: payload,
+        headers: request.headers,
+      });
+      return true;
+    } catch (error) {
+      if (error instanceof WebhookVerificationError) {
+        this.logger.warn(`Invalid webhook signature: ${error.message}`);
+        return false;
+      }
+      throw error;
     }
-
-    return isValid;
   }
 }

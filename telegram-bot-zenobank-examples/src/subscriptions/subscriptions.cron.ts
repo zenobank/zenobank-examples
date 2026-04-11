@@ -40,7 +40,7 @@ export class SubscriptionsCron {
 
       await this.botService.sendMessage({
         chatId: telegramId,
-        text: "Your subscription has expired and you have been removed from the group.\n\nUse /start to renew your subscription.",
+        text: "⏰ <b>Your subscription has expired</b>\n\n👋 You've been removed from the group.\n\n🔄 Use /start to renew and jump right back in! 🚀",
       });
 
       await sleep(ms("0.1s")); // avoid telegram rate limiting

@@ -20,7 +20,7 @@
     "@nestjs/schedule": "^4.0.0",
     "@nestjs/throttler": "^5.0.0",
     "@prisma/client": "^6.19.2",
-    "@zenobank/sdk": "^0.4.0",
+    "@zenobank/sdk": "^0.6.1",
     "dotenv": "^17.3.1",
     "nestjs-telegraf": "^2.0.0",
     "reflect-metadata": "^0.2.0",

@@ -24,7 +24,7 @@ export const BotBuilder = {
 
   paymentLinkKeyboard(url: string): Markup.Markup<InlineKeyboardMarkup> {
     return Markup.inlineKeyboard([
-      [Markup.button.url("Complete Payment", url)],
+      [Markup.button.url("💳 Complete Payment", url)],
     ]);
   },
 
@@ -32,7 +32,7 @@ export const BotBuilder = {
     plan: SubscriptionPlan
   ): Markup.Markup<InlineKeyboardMarkup> {
     return Markup.inlineKeyboard([
-      [Markup.button.callback("Renew", CALLBACK.plan(plan))],
+      [Markup.button.callback("🔄 Renew Subscription", CALLBACK.plan(plan))],
     ]);
   },
 };

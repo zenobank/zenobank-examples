@@ -68,12 +68,12 @@ export class PaymentsWebhooksService {
         userId: telegramId,
       });
 
+      const expiresOn = extended.endDate.toISOString().split("T")[0];
+
       if (isMember) {
         await this.botService.sendMessage({
           chatId: telegramId,
-          text: `Payment received! Your access has been extended.\n\nExpires: ${
-            extended.endDate.toISOString().split("T")[0]
-          }\n\nYou are already in the group.`,
+          text: `🎉 <b>Payment received!</b>\n\n✅ Your access has been extended.\n📅 Expires: <b>${expiresOn}</b>\n\n👥 You're already in the group — enjoy! 🚀`,
         });
       } else {
         const inviteLink = await this.botService.createInviteLink({
@@ -81,11 +81,7 @@ export class PaymentsWebhooksService {
         });
         await this.botService.sendMessage({
           chatId: telegramId,
-          text: `Payment received! Here's your invite link:\n\n${
-            inviteLink.invite_link
-          }\n\nExpires: ${
-            extended.endDate.toISOString().split("T")[0]
-          }\n\nThis link can only be used once.`,
+          text: `🎉 <b>Payment received!</b>\n\n🔗 Here's your exclusive invite link:\n${inviteLink.invite_link}\n\n📅 Expires: <b>${expiresOn}</b>\n⚠️ This link can only be used once.\n\nWelcome aboard! 🚀`,
         });
       }
     } catch (error: unknown) {
