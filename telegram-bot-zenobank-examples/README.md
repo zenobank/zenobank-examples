@@ -22,7 +22,12 @@ Built with NestJS + [Telegraf](https://telegraf.js.org) and the [`@zenobank/sdk`
      <img alt="Bot /start response with plans and payment button" src="./assets/bot-start.png" width="560">
    </p>
 
-2. User pays with crypto on the hosted checkout.
+2. User pays with crypto on the Zeno Bank hosted checkout.
+
+   <p align="center">
+     <img alt="Zeno Bank hosted crypto checkout" src="./assets/checkout.png" width="360">
+   </p>
+
 3. Zeno Bank webhook → signature verified by `ZenobankSignatureGuard` → subscription extended → bot DMs a **single-use invite link**.
 
    <p align="center">
