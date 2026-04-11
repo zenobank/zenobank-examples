@@ -2,10 +2,6 @@
 
 Turn a private Telegram group into a paid subscription community. Users pay in crypto (USDT, USDC, BTC, ETH, and more) via [Zeno Bank](https://zenobank.io), and the bot sends them a single-use invite link once the payment is confirmed.
 
-<p align="center">
-  <img alt="Telegram bot /start — plan selection and payment prompt" src="./assets/bot-start.png" width="560">
-</p>
-
 ## Resources
 
 - [Zeno Bank Documentation](https://docs.zenobank.io): API reference and integration guides
