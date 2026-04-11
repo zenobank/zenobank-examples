@@ -81,7 +81,17 @@ Renewals stack on top of the current `endDate`. A daily cron ([`subscriptions.cr
 
 Zeno Bank → `POST /webhooks/payments/zenobank`. Handles `checkout.completed` and `checkout.expired`.
 
-Local dev: `ngrok http 3000`, then register the URL in the [dashboard](https://dashboard.zenobank.io/developer).
+**Local dev:** Zeno Bank can't reach `localhost`, so expose your server with ngrok:
+
+```bash
+ngrok http 3000
+```
+
+Copy the `https://...ngrok-free.app` URL ngrok prints, then go to the [Zeno Bank Dashboard → Developer](https://dashboard.zenobank.io/developer) and add it as your webhook endpoint, appending the path:
+
+```
+https://<your-ngrok-id>.ngrok-free.app/webhooks/payments/zenobank
+```
 
 ## Bot commands
 
