@@ -36,7 +36,13 @@ Built with NestJS + [Telegraf](https://telegraf.js.org), powered by [Zeno Bank](
 1. **Create the bot** with [@BotFather](https://t.me/BotFather) → `/newbot` → copy the token into `BOT_TOKEN`.
 2. **Make your group a supergroup.** Basic groups can't generate invite links. Convert: group → Edit → Group Type → set **Public** (any temp username), save, then switch back to **Private**. ([Telegram FAQ](https://telegram.org/faq#q-what-39s-the-difference-between-groups-channels-and-supergroups))
 3. **Add the bot as admin** with **Invite Users via Link** + **Ban Users** permissions.
-4. **Get the chat id**: add [@RawDataBot](https://t.me/RawDataBot), copy `chat.id` (looks like `-1001234567890`), remove it.
+4. **Get the chat id**:
+   - Send any message in your group (e.g. "hello").
+   - Open this URL in your browser, replacing `<BOT_TOKEN>` with your bot token from BotFather:
+     ```
+     https://api.telegram.org/bot<BOT_TOKEN>/getUpdates
+     ```
+   - You'll see a JSON response. Copy the whole thing, paste it into ChatGPT, and ask: **"what is the chat id of the group?"** — it'll pull out the number for you (looks like `-1001234567890`). That's your `GROUP_CHAT_ID`.
 
 ## Setup
 
@@ -51,11 +57,11 @@ pnpm run start:dev
 Fill in `.env`:
 
 ```env
-BOT_TOKEN=123456789:ABC...              # @BotFather
-GROUP_CHAT_ID=-1001234567890            # supergroup id (@RawDataBot)
-ADMIN_TELEGRAM_IDS=123456789
-ZENOBANK_API_KEY=your-api-key           # dashboard.zenobank.io/developer
-ZENOBANK_WEBHOOK_SECRET=whsec_...
+BOT_TOKEN=123456789:ABC...              # Token you got from BotFather when you ran /newbot
+GROUP_CHAT_ID=-1001234567890            # Your supergroup's chat id (from the getUpdates step above)
+ADMIN_TELEGRAM_IDS=123456789            # Your personal Telegram user id
+ZENOBANK_API_KEY=your-api-key           # From https://dashboard.zenobank.io/developer
+ZENOBANK_WEBHOOK_SECRET=whsec_...       # From https://dashboard.zenobank.io/developer
 DATABASE_URL=postgresql://postgres:postgres@localhost:5432/telegram_bot
 PORT=3000
 ```
