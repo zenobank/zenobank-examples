@@ -90,7 +90,7 @@ curl http://localhost:3000/api/orders/8dd2eed2-7e1f-4a2b-9c3d-5f1a2b3c4d5e
 
 ### Webhook
 
-Zeno Bank sends a `POST` to `/api/webhooks/zenobank` when a checkout status changes. The handler verifies the signature with `zenobank.webhooks.verifyWebhook` before updating the order.
+Zeno Bank sends a `POST` to `/api/webhooks/zenobank` when a checkout status changes. The handler verifies the signature with `zenobank.webhooks.verify` before updating the order.
 
 Handled events:
 - `checkout.completed` — marks the order as `PAID`

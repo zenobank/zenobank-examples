@@ -79,7 +79,7 @@ Redirect the customer to `checkoutUrl` to complete the payment.
 
 ### Webhook
 
-Zeno Bank sends a `POST` to `/webhooks/zenobank` when a checkout status changes. A scoped `addContentTypeParser` preserves the raw request body so `zenoBank.webhooks.verifyWebhook` can validate the signature before the handler runs.
+Zeno Bank sends a `POST` to `/webhooks/zenobank` when a checkout status changes. A scoped `addContentTypeParser` preserves the raw request body so `zenoBank.webhooks.verify` can validate the signature before the handler runs.
 
 Handled events:
 - `checkout.completed` — marks the order as `PAID`

@@ -8,7 +8,7 @@ export async function handleWebhook(req: Request): Promise<Response> {
   const rawBody = await req.text();
 
   try {
-    zenoBank.webhooks.verifyWebhook({
+    zenoBank.webhooks.verify({
       secret: env.ZENOBANK_WEBHOOK_SECRET,
       rawBody,
       headers: Object.fromEntries(req.headers.entries()),

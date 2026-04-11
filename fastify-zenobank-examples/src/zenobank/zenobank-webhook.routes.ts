@@ -35,7 +35,7 @@ export const zenoBankWebhookRoutes: FastifyPluginAsync = async (fastify) => {
     }
 
     try {
-      zenoBank.webhooks.verifyWebhook({
+      zenoBank.webhooks.verify({
         secret: env.ZENOBANK_WEBHOOK_SECRET,
         rawBody: request.rawBody,
         headers: request.headers,

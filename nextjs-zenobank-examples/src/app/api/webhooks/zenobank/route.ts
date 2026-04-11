@@ -11,7 +11,7 @@ export async function POST(request: Request) {
   const rawBody = await request.text();
 
   try {
-    zenobank.webhooks.verifyWebhook({
+    zenobank.webhooks.verify({
       secret: env.ZENOBANK_WEBHOOK_SECRET,
       rawBody,
       headers: Object.fromEntries(request.headers),

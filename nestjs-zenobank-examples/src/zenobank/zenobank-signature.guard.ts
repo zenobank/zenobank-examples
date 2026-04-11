@@ -28,7 +28,7 @@ export class ZenoBankSignatureGuard implements CanActivate {
     }
 
     try {
-      this.zenoBank.webhooks.verifyWebhook({
+      this.zenoBank.webhooks.verify({
         secret: env.ZENOBANK_WEBHOOK_SECRET,
         rawBody: req.rawBody,
         headers: req.headers,

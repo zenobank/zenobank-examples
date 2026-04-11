@@ -8,7 +8,7 @@ const rawJson = express.raw({ type: 'application/json' });
 
 function verifySignature(req, _res, next) {
   try {
-    zenoBank.webhooks.verifyWebhook({
+    zenoBank.webhooks.verify({
       secret: env.ZENOBANK_WEBHOOK_SECRET,
       rawBody: req.body,
       headers: req.headers,
