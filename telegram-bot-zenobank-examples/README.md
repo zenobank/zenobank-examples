@@ -1,4 +1,4 @@
-# Telegram Crypto Payment Bot — Paid Group Subscriptions
+# Telegram Bot for Paid Group Subscriptions with Crypto Payments
 
 Turn any private Telegram group into a paid, subscription-based community. Users pay in crypto (USDT, USDC, BTC, ETH, and more) via [Zeno Bank](https://zenobank.io) — a crypto payment gateway that handles hosted checkout, multi-chain support, and webhooks — and the bot takes care of the rest: it generates single-use invite links for paying members, tracks subscription expiry in a Postgres database, and automatically kicks members whose subscriptions have lapsed.
 
